@@ -1,4 +1,4 @@
-# yue_au_lp
+# yue_ao_lp
 Generates Yue Au License Plates
 
 ### To run
