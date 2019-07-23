@@ -11,8 +11,8 @@ from jittering_methods import *
 
 fake_resource_dir  = sys.path[0] + "/fake_resource/" 
 output_dir = sys.path[0] + "/test_plate/"
-number_dir = [fake_resource_dir + "/numbers/",fake_resource_dir + "/numbers1/" ]
-letter_dir = [fake_resource_dir + "/letters/" ,fake_resource_dir + "/letters1/"]
+number_dir = fake_resource_dir + "/numbers/"
+letter_dir = fake_resource_dir + "/letters/" 
 plate_dir = fake_resource_dir + "/plate_background_use/"
 yue_dir = fake_resource_dir + "/yue/"
 gang_dir = fake_resource_dir + "/gang/"
@@ -29,8 +29,8 @@ class FakePlateGenerator():
         self.dst_size = plate_size
 
         #self.chinese = self.load_image(chinese_dir, character_y_size)
-        self.numbers = self.load_image(number_dir[font], character_y_size)
-        self.letters = self.load_image(letter_dir[font], character_y_size)
+        self.numbers = self.load_image(number_dir, character_y_size)
+        self.letters = self.load_image(letter_dir, character_y_size)
         self.yue = self.load_image(yue_dir, character_y_size)
         self.gang = self.load_image(gang_dir, character_y_size)
 
