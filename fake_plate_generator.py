@@ -26,11 +26,12 @@ number_dir = fake_resource_dir + "/numbers/"
 letter_dir = fake_resource_dir + "/letters/" 
 plate_dir = fake_resource_dir + "/plate_background_use/"
 yue_dir = fake_resource_dir + "/yue/"
-gang_dir = fake_resource_dir + "/gang/"
+ao_gang_dir = fake_resource_dir + "/ao_gang/"
+z_dir = fake_resource_dir + "/z/"
 
 
-# character_y_size = 100
-character_y_size = 110
+# character_y_size = 110
+character_y_size = 105
 plate_y_size = 150
 # plate_y_size = 164
 
@@ -43,7 +44,8 @@ class FakePlateGenerator():
         self.numbers = self.load_image(number_dir, character_y_size)
         self.letters = self.load_image(letter_dir, character_y_size)
         self.yue = self.load_image(yue_dir, character_y_size)
-        self.gang = self.load_image(gang_dir, character_y_size)
+        self.ao_gang = self.load_image(ao_gang_dir, character_y_size)
+        self.z = self.load_image(z_dir,character_y_size)
 
         self.numbers_and_letters = dict(self.numbers, **self.letters)
 
@@ -110,7 +112,7 @@ class FakePlateGenerator():
         plate_name += "%s"%(character,)
         plate_chars += character
 
-        character, img = self.get_radom_sample(self.letters)
+        character, img = self.get_radom_sample(self.z)
         self.add_character_to_plate(img, plate_img, self.character_position_x_listStart[i]+60)
         plate_name += "%s"%(character,)
         plate_chars += character
@@ -133,7 +135,7 @@ class FakePlateGenerator():
             self.add_character_to_plate(img, plate_img, self.character_position_x_listRest[j-2])
             plate_name += character
             plate_chars += character
-        character, img =  self.get_radom_sample(self.gang)
+        character, img =  self.get_radom_sample(self.ao_gang)
         self.add_character_to_plate(img, plate_img, self.character_position_x_listRest[len(self.character_position_x_listRest)-1])
         plate_name += character
         plate_chars += character
@@ -148,7 +150,7 @@ class FakePlateGenerator():
 
 def write_to_txt(fo,img_name, plate_characters):
     plate_label = '|' + '|'.join(plate_characters.decode('utf8')) + '|'
-    print(plate_label)
+    print(plate_label.upper())
     line = img_name.decode('utf8') + ';' + plate_label.upper() + '\n'
     fo.write("%s" % line)
 
